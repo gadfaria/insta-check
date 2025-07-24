@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { FileArchive, AlertCircle, CheckCircle, Loader } from "lucide-react";
 import JSZip from "jszip";
+import { AlertCircle, CheckCircle, FileArchive, Loader } from "lucide-react";
+import { useState } from "react";
 import "./InstagramUpload.css";
 
 interface InstagramData {
@@ -89,6 +89,7 @@ function InstagramUpload({ onDataUpload }: InstagramUploadProps) {
       return (
         data.username ||
         data.profile_user?.[0]?.string_list_data?.[0]?.value ||
+        data.profile_user?.[0]?.string_map_data?.Username?.value ||
         "usuario_instagram"
       );
     } catch {
@@ -119,6 +120,7 @@ function InstagramUpload({ onDataUpload }: InstagramUploadProps) {
     ];
 
     const possibleProfileFiles = [
+      "personal_information/personal_information/personal_information.json",
       "personal_information/personal_information.json",
       "profile/profile.json",
       "account_information/account_information.json",

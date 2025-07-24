@@ -30,6 +30,8 @@
   border-radius: 8px;
   transition: all 0.2s;
   border: 1px solid transparent;
+
+  cursor: pointer;
 }
 
 .user-card.mutual {
@@ -39,7 +41,6 @@
 
 .user-card.mutual:hover {
   background: #dcfce7;
-  transform: translateX(4px);
 }
 
 .user-card.not-following-back {
@@ -49,7 +50,6 @@
 
 .user-card.not-following-back:hover {
   background: #fee2e2;
-  transform: translateX(4px);
 }
 
 .user-avatar {

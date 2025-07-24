@@ -10,6 +10,11 @@ body {
     Ubuntu, Cantarell, sans-serif;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   min-height: 100vh;
+
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
 }
 
 .app {

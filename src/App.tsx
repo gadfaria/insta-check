@@ -12,7 +12,11 @@ export interface User {
 function App() {
   const [user, setUser] = useState<User | null>(null);
 
-  const handleDataUpload = (data: { username: string; followers: string[]; following: string[] }) => {
+  const handleDataUpload = (data: {
+    username: string;
+    followers: string[];
+    following: string[];
+  }) => {
     const userData: User = {
       username: data.username,
       followers: data.followers,

@@ -20,6 +20,10 @@ function FollowersList({ title, users, type }: FollowersListProps) {
     );
   }
 
+  function handleCardClick(username: string) {
+    window.open(`https://www.instagram.com/${username}`, "_blank");
+  }
+
   return (
     <div className="followers-list">
       <h3>
@@ -27,7 +31,11 @@ function FollowersList({ title, users, type }: FollowersListProps) {
       </h3>
       <div className="users-grid">
         {users.map((username, index) => (
-          <div key={index} className={`user-card ${type}`}>
+          <div
+            key={index}
+            className={`user-card ${type}`}
+            onClick={() => handleCardClick(username)}
+          >
             <div className="user-avatar">
               <User size={20} />
             </div>
