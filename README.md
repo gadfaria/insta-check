@@ -1,4 +1,4 @@
-# Insta Check
+# insta-check
 
 A web application to analyze Instagram followers using your exported Instagram data. Built with React, TypeScript and Vite.
 
