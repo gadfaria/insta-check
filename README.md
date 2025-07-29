@@ -1,111 +1,97 @@
-# 📸 Insta Check
+# Insta Check
 
-A modern web application to analyze Instagram followers using your **real data** exported directly from Instagram, built with React, TypeScript and Vite.js.
+A web application to analyze Instagram followers using your exported Instagram data. Built with React, TypeScript and Vite.
 
-## 🚀 Features
+## Features
 
-- **Real Data Upload**: Load the ZIP file with your Instagram data
-- **Complete Analysis**:
-  - Followers who don't follow you back
-  - Mutual followers
-  - Reciprocity rate
-  - Statistical insights
-- **Interactive Dashboard**: Complete visualization of follower data
-- **Analysis Export**: Download complete analysis in JSON format
-- **100% Private**: All data stays in your browser
-- **Responsive Design**: Adaptable interface for desktop and mobile
+- Upload Instagram data export (ZIP file)
+- Analyze followers who don't follow you back
+- View mutual followers and reciprocity rate
+- Interactive dashboard with statistics
+- Export analysis results
+- Client-side processing (data stays in your browser)
+- Responsive design
 
-## 📋 How to use your real Instagram data
+## How to Export Instagram Data
 
-### Step 1: Request your data
+### Request your data from Instagram
 
-1. Open Instagram in browser or app
-2. Go to **Settings** → **Privacy** → **Download your information**
-3. Select **"Some of your information"**
-4. Check only **"Connections"** or **"Followers and following"**
-5. Choose **JSON** format and **Low** quality
-6. Click **"Request download"**
+1. Go to Instagram Settings > Privacy > Download your information
+2. Select "Some of your information"
+3. Check "Connections" or "Followers and following"
+4. Choose JSON format and Low quality
+5. Request download
 
-### Step 2: Wait for the file
+### Wait and download
 
-- Instagram will send an email when the file is ready
-- Usually takes a few hours up to 48h
+Instagram will email you when ready (usually within 48 hours).
 
-### Step 3: Use in Insta Check
+### Use with Insta Check
 
 1. Download the ZIP file from Instagram
-2. Access Insta Check
-3. Upload the ZIP file
-4. View your complete analysis!
+2. Upload it to Insta Check
+3. View your analysis
 
-## 🛠️ Technologies Used
+## Technologies
 
-- **React 18** - Modern UI library
-- **TypeScript** - Static typing for JavaScript
-- **Vite.js** - Fast development server and build tool
-- **JSZip** - ZIP file processing library
-- **Lucide React** - Modern icons
-- **CSS Modules** - Scoped component styling
+- React 18
+- TypeScript
+- Vite
+- JSZip
+- Lucide React
+- CSS Modules
 
-## 🏃‍♂️ Running Locally
+## Development
 
 ### Prerequisites
 
 - Node.js 16+
 - npm or yarn
 
-### Installation
-
-1. Clone the repository:
+### Setup
 
 ```bash
 git clone https://github.com/gadfaria/insta-check.git
 cd insta-check
-```
-
-2. Install dependencies:
-
-```bash
 npm install
-```
-
-3. Start development server:
-
-```bash
 npm run dev
 ```
 
-4. Open your browser at [http://localhost:5173](http://localhost:5173)
+Open http://localhost:5173
 
-## 📦 Available Scripts
+## Scripts
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
+- `npm run dev` - Development server
+- `npm run build` - Production build
+- `npm run preview` - Preview build
+- `npm run lint` - Run linter
 
-## 🔒 Project Structure
+## Project Structure
 
 ```
 src/
-├── components/          # Reusable components
-│   ├── Dashboard.tsx       # Analysis dashboard
-│   ├── InstagramUpload.tsx # ZIP file upload
-│   ├── FollowersList.tsx   # User lists display
-│   └── StatsCard.tsx       # Metrics component
-├── styles/             # CSS Modules
-├── types/              # TypeScript definitions
-├── App.tsx             # Main component
-└── main.tsx           # App entry point
+├── components/
+│   ├── Dashboard.tsx
+│   ├── InstagramUpload.tsx
+│   ├── FollowersList.tsx
+│   └── StatsCard.tsx
+├── styles/
+├── types/
+├── App.tsx
+└── main.tsx
 ```
 
-## 🛡️ Privacy and Security
+## Privacy
 
-- **100% Client-side**: All processing is done in your browser
-- **No data transmission**: Your data never leaves your device
-- **No external APIs**: Doesn't connect to Instagram or external services
-- **Open source**: Complete code available for review
+- All processing happens in your browser
+- No data is sent to external servers
+- No connection to Instagram APIs
+- Open source code
 
-## 📄 License
+## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+MIT License
+
+<h5 align="center">
+  ☕ Code and Coffee
+</h5>
