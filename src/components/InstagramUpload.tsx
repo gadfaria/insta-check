@@ -58,19 +58,18 @@ function InstagramUpload({ onDataUpload }: InstagramUploadProps) {
     try {
       const data = JSON.parse(jsonContent);
 
+      // New format: { relationships_following: [{ title: "username", string_list_data: [...] }] }
+      if (data.relationships_following) {
+        return data.relationships_following
+          .map((item: { title?: string }) => item.title)
+          .filter(Boolean);
+      }
+
+      // Old format: array with string_list_data containing value
       if (Array.isArray(data)) {
         return data
           .filter((item) => item.string_list_data && item.string_list_data[0])
           .map((item) => item.string_list_data[0].value)
-          .filter(Boolean);
-      }
-
-      if (data.relationships_following) {
-        return data.relationships_following
-          .map(
-            (item: { string_list_data?: Array<{ value: string }> }) =>
-              item.string_list_data?.[0]?.value
-          )
           .filter(Boolean);
       }
 
@@ -243,16 +242,24 @@ function InstagramUpload({ onDataUpload }: InstagramUploadProps) {
         <ol>
           <li>
             Acesse{" "}
-            <strong>
-              Configurações → Privacidade → Baixar suas informações
-            </strong>
+            <a 
+              href="https://accountscenter.instagram.com/info_and_permissions/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              style={{ color: '#0095f6', textDecoration: 'underline' }}
+            >
+              <strong>accountscenter.instagram.com/info_and_permissions</strong>
+            </a>
           </li>
           <li>
-            Selecione <strong>"Algumas das suas informações"</strong>
+            Clique em <strong>"Exportar suas informações"</strong> → <strong>"Criar exportação"</strong> → <strong>"Exportar para dispositivo"</strong>
+          </li>
+          <li>
+            Selecione <strong>"Personalizar informações"</strong>
           </li>
           <li>
             Marque apenas <strong>"Conexões"</strong> ou{" "}
-            <strong>"Seguidores e seguindo"</strong>
+            <strong>"Seguidores e Seguindo"</strong>
           </li>
           <li>
             Escolha formato <strong>JSON</strong> e baixe o arquivo ZIP
