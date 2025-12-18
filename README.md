@@ -16,11 +16,12 @@ A web application to analyze Instagram followers using your exported Instagram d
 
 ### Request your data from Instagram
 
-1. Go to Instagram Settings > Privacy > Download your information
-2. Select "Some of your information"
-3. Check "Connections" or "Followers and following"
-4. Choose JSON format and Low quality
-5. Request download
+1. Go to [accountscenter.instagram.com/info_and_permissions](https://accountscenter.instagram.com/info_and_permissions/)
+2. Click "Exportar suas informações" (Download your information) → "Criar exportação" (Create export) → "Exportar para dispositivo" (Download to device)
+3. Select "Personalizar informações" (Customize information)
+4. Check only "Conexões" (Connections) or "Seguidores e Seguindo" (Followers and following)
+5. Choose JSON format and Low quality
+6. Request download
 
 ### Wait and download
 
