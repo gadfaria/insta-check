@@ -5,7 +5,7 @@ interface StatsCardProps {
   title: string;
   value: number;
   icon: ReactNode;
-  color: "blue" | "green" | "purple" | "red";
+  color: "blue" | "green" | "purple" | "red" | "orange";
 }
 
 function StatsCard({ title, value, icon, color }: StatsCardProps) {

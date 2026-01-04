@@ -4,7 +4,7 @@ import "./FollowersList.css";
 interface FollowersListProps {
   title: string;
   users: string[];
-  type: "mutual" | "not-following-back";
+  type: "mutual" | "not-following-back" | "pending";
 }
 
 function FollowersList({ title, users, type }: FollowersListProps) {

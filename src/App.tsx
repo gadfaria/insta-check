@@ -7,6 +7,7 @@ export interface User {
   username: string;
   followers: string[];
   following: string[];
+  pendingFollowers: string[];
 }
 
 function App() {
@@ -16,11 +17,13 @@ function App() {
     username: string;
     followers: string[];
     following: string[];
+    pendingFollowers: string[];
   }) => {
     const userData: User = {
       username: data.username,
       followers: data.followers,
       following: data.following,
+      pendingFollowers: data.pendingFollowers,
     };
     setUser(userData);
   };

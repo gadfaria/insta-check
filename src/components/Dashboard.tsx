@@ -1,4 +1,4 @@
-import { Download, RefreshCw, UserMinus, UserPlus, Users } from "lucide-react";
+import { Download, RefreshCw, UserMinus, UserPlus, Users, Clock } from "lucide-react";
 import type { User } from "../App";
 import "./Dashboard.css";
 import FollowersList from "./FollowersList";
@@ -92,6 +92,12 @@ function Dashboard({ user, onLogout }: DashboardProps) {
           icon={<UserMinus size={24} />}
           color="red"
         />
+        <StatsCard
+          title="Pendentes"
+          value={user.pendingFollowers.length}
+          icon={<Clock size={24} />}
+          color="orange"
+        />
       </div>
 
       <div className="insights-section">
@@ -132,6 +138,13 @@ function Dashboard({ user, onLogout }: DashboardProps) {
           users={mutualFollows}
           type="mutual"
         />
+        {user.pendingFollowers.length > 0 && (
+          <FollowersList
+            title="Solicitações pendentes"
+            users={user.pendingFollowers}
+            type="pending"
+          />
+        )}
       </div>
     </div>
   );

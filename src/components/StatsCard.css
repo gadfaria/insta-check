@@ -44,6 +44,11 @@
   color: #dc2626;
 }
 
+.stats-card.orange .stats-icon {
+  background: #ffedd5;
+  color: #ea580c;
+}
+
 .stats-content {
   flex: 1;
 }

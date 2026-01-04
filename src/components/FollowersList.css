@@ -52,6 +52,15 @@
   background: #fee2e2;
 }
 
+.user-card.pending {
+  background: #fff7ed;
+  border-color: #fed7aa;
+}
+
+.user-card.pending:hover {
+  background: #ffedd5;
+}
+
 .user-avatar {
   width: 32px;
   height: 32px;
@@ -71,6 +80,11 @@
 .user-card.not-following-back .user-avatar {
   background: #fecaca;
   color: #dc2626;
+}
+
+.user-card.pending .user-avatar {
+  background: #fed7aa;
+  color: #ea580c;
 }
 
 .username {

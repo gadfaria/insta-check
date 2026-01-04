@@ -7,6 +7,7 @@ interface InstagramData {
   username: string;
   followers: string[];
   following: string[];
+  pendingFollowers: string[];
   rawData?: {
     followers_1?: unknown;
     following?: unknown;
@@ -50,6 +51,37 @@ function InstagramUpload({ onDataUpload }: InstagramUploadProps) {
       return [];
     } catch (error) {
       console.error("Error processing followers:", error);
+      return [];
+    }
+  };
+
+  const parseInstagramPendingFollowers = (jsonContent: string): string[] => {
+    try {
+      const data = JSON.parse(jsonContent);
+
+      // Format: { relationships_follow_requests_sent: [...] }
+      if (data.relationships_follow_requests_sent && Array.isArray(data.relationships_follow_requests_sent)) {
+        return data.relationships_follow_requests_sent
+          .filter((item: { string_list_data?: Array<{ value: string }> }) => 
+            item.string_list_data && item.string_list_data[0]
+          )
+          .map((item: { string_list_data: Array<{ value: string }> }) => 
+            item.string_list_data[0].value
+          )
+          .filter(Boolean);
+      }
+
+      // Fallback: array of objects with "string_list_data"
+      if (Array.isArray(data)) {
+        return data
+          .filter((item) => item.string_list_data && item.string_list_data[0])
+          .map((item) => item.string_list_data[0].value)
+          .filter(Boolean);
+      }
+
+      return [];
+    } catch (error) {
+      console.error("Error processing pending followers:", error);
       return [];
     }
   };
@@ -102,6 +134,7 @@ function InstagramUpload({ onDataUpload }: InstagramUploadProps) {
 
     let followers: string[] = [];
     let following: string[] = [];
+    let pendingFollowers: string[] = [];
     let username = "usuario_instagram";
     const rawData: Record<string, unknown> = {};
 
@@ -116,6 +149,12 @@ function InstagramUpload({ onDataUpload }: InstagramUploadProps) {
       "connections/followers_and_following/following.json",
       "followers_and_following/following.json",
       "following.json",
+    ];
+
+    const possiblePendingFollowerFiles = [
+      "connections/followers_and_following/pending_follow_requests.json",
+      "followers_and_following/pending_follow_requests.json",
+      "pending_follow_requests.json",
     ];
 
     const possibleProfileFiles = [
@@ -147,6 +186,16 @@ function InstagramUpload({ onDataUpload }: InstagramUploadProps) {
       }
     }
 
+    // Process pending followers
+    for (const fileName of possiblePendingFollowerFiles) {
+      const file = zipContent.file(fileName);
+      if (file) {
+        const content = await file.async("string");
+        pendingFollowers = parseInstagramPendingFollowers(content);
+        break;
+      }
+    }
+
     // Process profile to get username
     for (const fileName of possibleProfileFiles) {
       const file = zipContent.file(fileName);
@@ -172,6 +221,7 @@ function InstagramUpload({ onDataUpload }: InstagramUploadProps) {
       username,
       followers,
       following,
+      pendingFollowers,
       rawData,
     };
   };
